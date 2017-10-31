@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">todo-achitecture</string>
+    <string name="action_delete">Delete</string>
+</resources>
