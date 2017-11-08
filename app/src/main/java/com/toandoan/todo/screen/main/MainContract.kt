@@ -25,5 +25,7 @@ interface MainContract {
     fun addTask(task: Task)
 
     fun deleteAllRecord()
+
+    fun saveTask(task: Task)
   }
 }

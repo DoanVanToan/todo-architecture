@@ -20,6 +20,7 @@ class TaskLocalDataSource(val taskDAO: TaskDAO) : TaskDataSource {
   }
 
   override fun saveTask(task: Task) {
+    taskDAO.updateTask(task)
   }
 
   override fun activeTask(task: Task) {

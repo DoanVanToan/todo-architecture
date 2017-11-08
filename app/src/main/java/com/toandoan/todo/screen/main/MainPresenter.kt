@@ -86,5 +86,10 @@ class MainPresenter : MainContract.Presenter {
     compositeDisposable!!.add(disposible)
   }
 
+  override fun saveTask(task: Task) {
+    taskRepository!!.saveTask(task)
+
+  }
+
 
 }

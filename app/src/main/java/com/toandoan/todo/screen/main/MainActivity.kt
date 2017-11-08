@@ -18,7 +18,7 @@ import com.toandoan.todo.data.model.local.TaskLocalDataSource
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-class MainActivity : AppCompatActivity(), MainContract.View, View.OnClickListener {
+class MainActivity : AppCompatActivity(), MainContract.View, View.OnClickListener, OnItemCheckListenner {
 
   lateinit var mainPresenter: MainContract.Presenter
   lateinit var adapter: MainAdapter
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), MainContract.View, View.OnClickListene
         TaskLocalDataSource(TaskDatabase.getInstance(this)!!.taskDAO()))
     mainPresenter = MainPresenter(taskRepository, this)
 
-    adapter = MainAdapter(arrayListOf())
+    adapter = MainAdapter(arrayListOf(), this)
     recyclerView.layoutManager = LinearLayoutManager(this)
     recyclerView.adapter = adapter
     floatingActionButton.setOnClickListener(this)
@@ -112,6 +112,10 @@ class MainActivity : AppCompatActivity(), MainContract.View, View.OnClickListene
   private fun random(from: Int, to: Int): Int {
     var randone = Random()
     return randone.nextInt(to - from) + from
+  }
+
+  override fun onCheckChange(task: Task) {
+    mainPresenter?.saveTask(task)
   }
 
 }

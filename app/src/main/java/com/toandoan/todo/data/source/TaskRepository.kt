@@ -13,6 +13,7 @@ class TaskRepository(val taskLocalDataSource: TaskDataSource) : TaskDataSource {
   }
 
   override fun saveTask(task: Task) {
+    taskLocalDataSource.saveTask(task)
   }
 
   override fun activeTask(task: Task) {
